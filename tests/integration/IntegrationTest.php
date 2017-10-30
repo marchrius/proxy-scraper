@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\IntegrationTests;
 
@@ -22,8 +22,9 @@ abstract class IntegrationTest extends TestCase
 
     /**
      *
+     * @return void
      */
-    public function setUp(): void
+    public function setUp()
     {
         $this->container = $this->createContainer();
     }

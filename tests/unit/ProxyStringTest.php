@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests;
 
@@ -15,8 +15,9 @@ final class ProxyStringTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
-    public function it_converts_to_string(): void
+    public function it_converts_to_string()
     {
         $proxyString = new ProxyString('192.168.0.1:1234');
         $this->assertSame('192.168.0.1:1234', (string)$proxyString);
@@ -24,8 +25,9 @@ final class ProxyStringTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
-    public function it_converts_to_proxy(): void
+    public function it_converts_to_proxy()
     {
         $proxyString = new ProxyString('192.168.0.1:1234');
         $this->assertInstanceOf(Proxy::class, $proxyString->asProxy());
@@ -37,8 +39,9 @@ final class ProxyStringTest extends TestCase
      * @dataProvider proxiesDataProvider
      * @param string $string
      * @param bool $expected
+     * @return void
      */
-    public function is_creates_from_strings(string $string, bool $expected): void
+    public function is_creates_from_strings(string $string, bool $expected)
     {
         try {
             new ProxyString($string);

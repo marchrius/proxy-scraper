@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Scrapers;
 
@@ -26,7 +26,7 @@ final class HideMyIpScraper implements ScraperInterface
     /**
      *
      */
-    private const URL = 'https://www.hide-my-ip.com/%s/proxylist.shtml';
+    const URL = 'https://www.hide-my-ip.com/%s/proxylist.shtml';
 
     /**
      * FreeProxyListScraper constructor.

@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper;
 
@@ -27,7 +27,7 @@ final class ProxyString
             throw new InvalidArgumentException('Bad formatted proxy string');
         }
 
-        [$ipv4, $port] = $parts;
+        list($ipv4, $port) = $parts;
 
         $this->proxy = new Proxy(new Ipv4($ipv4), new Port((int)$port));
     }

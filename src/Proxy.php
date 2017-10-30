@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper;
 
@@ -36,8 +36,9 @@ final class Proxy
 
     /**
      * @param Metric $metric
+     * @return void
      */
-    public function addMetric(Metric $metric): void
+    public function addMetric(Metric $metric)
     {
         $this->metrics[] = $metric;
     }

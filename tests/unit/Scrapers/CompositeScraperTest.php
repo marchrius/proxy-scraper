@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\Scrapers;
 
@@ -13,8 +13,10 @@ final class CompositeScraperTest extends TestCase
 {
     /**
      * @test
+     * @return void
+     * @throws ScraperException
      */
-    public function it_calls_inner_scrapers(): void
+    public function it_calls_inner_scrapers()
     {
         $compositeScraper = new CompositeScraper();
         $compositeScraper->addScraper(new class implements ScraperInterface
@@ -45,13 +47,17 @@ final class CompositeScraperTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\ScraperException
      * @expectedExceptionMessage some error
+     * @return void
+     * @throws ScraperException
      */
-    public function it_throws_exceptions_from_inner_scrapers(): void
+    public function it_throws_exceptions_from_inner_scrapers()
     {
         $compositeScraper = new CompositeScraper();
         $compositeScraper->addScraper(new class implements ScraperInterface
         {
-            /** @noinspection PhpInconsistentReturnPointsInspection */
+            /** @noinspection PhpInconsistentReturnPointsInspection
+             * @throws ScraperException
+             */
             public function get(): \Generator
             {
                 throw new ScraperException('some error');
@@ -62,13 +68,17 @@ final class CompositeScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws ScraperException
      */
-    public function it_handles_exceptions_from_inner_scrapper(): void
+    public function it_handles_exceptions_from_inner_scrapper()
     {
         $compositeScraper = new CompositeScraper();
         $compositeScraper->addScraper(new class implements ScraperInterface
         {
-            /** @noinspection PhpInconsistentReturnPointsInspection */
+            /** @noinspection PhpInconsistentReturnPointsInspection
+             * @throws ScraperException
+             */
             public function get(): \Generator
             {
                 throw new ScraperException('some error');

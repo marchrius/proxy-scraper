@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Validators;
 
@@ -15,7 +15,7 @@ final class Ipv4RangeValidator implements ValidatorInterface
      * @param Proxy $proxy
      * @throws ValidationException
      */
-    public function validate(Proxy $proxy): void
+    public function validate(Proxy $proxy)
     {
         if (!filter_var(
             (string)$proxy->getIpv4(),

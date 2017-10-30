@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\HttpClient;
 
@@ -16,8 +16,10 @@ final class GuzzleHttpClientTest extends TestCase
 {
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      */
-    public function it_returns_a_string(): void
+    public function it_returns_a_string()
     {
         /** @var Guzzle|\PHPUnit_Framework_MockObject_MockObject $guzzle */
         $guzzle = $this->createMock(Guzzle::class);
@@ -49,8 +51,10 @@ final class GuzzleHttpClientTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      */
-    public function it_returns_a_proxied_string(): void
+    public function it_returns_a_proxied_string()
     {
         /** @var Guzzle|\PHPUnit_Framework_MockObject_MockObject $guzzle */
         $guzzle = $this->createMock(Guzzle::class);
@@ -84,8 +88,10 @@ final class GuzzleHttpClientTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      * @expectedExceptionMessage error message
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      */
-    public function it_throws_http_exception(): void
+    public function it_throws_http_exception()
     {
         /** @var Guzzle|\PHPUnit_Framework_MockObject_MockObject $guzzle */
         $guzzle = $this->createMock(Guzzle::class);

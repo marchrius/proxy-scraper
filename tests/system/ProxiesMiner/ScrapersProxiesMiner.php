@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\SystemTests\ProxiesMiner;
 
@@ -18,8 +18,9 @@ final class ScrapersProxiesMiner implements ProxiesMinerInterface
 
     /**
      * @param ScraperInterface $scraper
+     * @return void
      */
-    public function addScraper(ScraperInterface $scraper): void
+    public function addScraper(ScraperInterface $scraper)
     {
         $fullClass = explode('\\', get_class($scraper));
         $class = end($fullClass);

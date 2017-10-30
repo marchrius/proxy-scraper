@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 use GuzzleHttp\Client as GuzzleClient;
 use Vantoozz\ProxyScraper\HttpClient\GuzzleHttpClient;

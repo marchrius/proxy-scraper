@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Validators;
 
@@ -27,9 +27,9 @@ final class CallbackValidator implements ValidatorInterface
 
     /**
      * @param Proxy $proxy
-     * @throws ValidationException
+     * @return void
      */
-    public function validate(Proxy $proxy): void
+    public function validate(Proxy $proxy)
     {
         call_user_func($this->callback, $proxy);
     }

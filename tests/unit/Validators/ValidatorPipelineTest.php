@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\Validators;
 
@@ -17,8 +17,10 @@ final class ValidatorPipelineTest extends TestCase
 {
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ValidationException
      */
-    public function it_calls_all_steps(): void
+    public function it_calls_all_steps()
     {
         $calls = 0;
         $pipeline = new ValidatorPipeline;

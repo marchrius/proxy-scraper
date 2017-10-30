@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests;
 
@@ -22,9 +22,10 @@ final class AppraiserTest extends TestCase
      * @dataProvider metricsDataProvider
      * @param array $proxied
      * @param array $expected
+     * @return void
      * @throws \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      */
-    public function it_returns_metrics(array $proxied, array $expected): void
+    public function it_returns_metrics(array $proxied, array $expected)
     {
         $client = new DummyHtmlClient(
             json_encode(['remote_address' => '127.0.0.1', 'headers' => []]),
@@ -44,8 +45,10 @@ final class AppraiserTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      */
-    public function it_validates_response_from_whoami(): void
+    public function it_validates_response_from_whoami()
     {
         $client = new DummyHtmlClient(
             json_encode(['remote_address' => '127.0.0.1', 'headers' => []]),
@@ -69,8 +72,10 @@ final class AppraiserTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      * @expectedExceptionMessage Invalid ipv4 string: some string
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      */
-    public function it_throws_exception_on_bad_whoami_response(): void
+    public function it_throws_exception_on_bad_whoami_response()
     {
         $client = new DummyHtmlClient(
             json_encode(['remote_address' => 'some string', 'headers' => []]),
@@ -86,7 +91,7 @@ final class AppraiserTest extends TestCase
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      * @expectedExceptionMessage error message
      */
-    public function it_throws_exception_on_http_client_exception(): void
+    public function it_throws_exception_on_http_client_exception()
     {
         $client = new class implements HttpClientInterface
         {
@@ -107,8 +112,10 @@ final class AppraiserTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      */
-    public function it_returns_metric_on_proxied_http_client_exception(): void
+    public function it_returns_metric_on_proxied_http_client_exception()
     {
         $client = new class implements HttpClientInterface
         {
@@ -117,6 +124,12 @@ final class AppraiserTest extends TestCase
                 return json_encode(['remote_address' => '127.0.0.1', 'headers' => []]);
             }
 
+            /**
+             * @param string $uri
+             * @param string $proxy
+             * @return string
+             * @throws HttpClientException
+             */
             public function getProxied(string $uri, string $proxy): string
             {
                 throw new HttpClientException('error message');
@@ -138,12 +151,12 @@ final class AppraiserTest extends TestCase
     }
 
 
-
-
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\AppraiserException
      */
-    public function it_returns_failed_https_metric(): void
+    public function it_returns_failed_https_metric()
     {
 
 
@@ -182,7 +195,7 @@ final class AppraiserTest extends TestCase
     /**
      * @return array
      */
-    public function metricsDataProvider(): array
+    public function metricsDataProvider()
     {
         return [
             [

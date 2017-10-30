@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\HttpClient;
 
@@ -51,21 +51,23 @@ final class GuzzleHttpClient implements HttpClientInterface
 
     /**
      * @param string $uri
-     * @param string|null $proxy
+     * @param string $proxy
      * @return string
      * @throws \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      */
-    private function request(string $uri, string $proxy = null): string
+    private function request(string $uri, string $proxy = ''): string
     {
         $options = [];
 
-        if (null !== $proxy) {
+        if (null !== $proxy && '' != $proxy) {
             $options['proxy'] = 'tcp://' . $proxy;
         }
 
         try {
             $data = $this->guzzle->request(Http::GET, $uri, $options)->getBody()->getContents();
-        } catch (GuzzleException | \RuntimeException | ClientException $e) {
+        } catch (GuzzleException $e) {
+            throw new HttpClientException($e->getMessage(), $e->getCode(), $e);
+        } catch (\RuntimeException $e) {
             throw new HttpClientException($e->getMessage(), $e->getCode(), $e);
         }
         return $data;

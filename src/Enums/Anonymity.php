@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Enums;
 
@@ -8,7 +8,7 @@ namespace Vantoozz\ProxyScraper\Enums;
  */
 abstract class Anonymity
 {
-    public const TRANSPARENT = 'transparent';
-    public const ANONYMOUS = 'anonymous';
-    public const ELITE = 'elite';
+    const TRANSPARENT = 'transparent';
+    const ANONYMOUS = 'anonymous';
+    const ELITE = 'elite';
 }

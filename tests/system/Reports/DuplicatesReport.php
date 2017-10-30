@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\SystemTests\Reports;
 
@@ -10,8 +10,9 @@ final class DuplicatesReport implements ReportInterface
 {
     /**
      * @param array $proxies
+     * @return void
      */
-    public function run(array $proxies): void
+    public function run(array $proxies)
     {
         $sources = array_keys($proxies);
         $duplicates = array_fill_keys($sources, []);

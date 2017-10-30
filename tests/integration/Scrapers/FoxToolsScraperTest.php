@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\IntegrationTests\Scrapers;
 
@@ -13,8 +13,10 @@ final class FoxToolsScraperTest extends IntegrationTest
 {
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_works(): void
+    public function it_works()
     {
         $scrapper = new FoxToolsScraper($this->httpClient());
 

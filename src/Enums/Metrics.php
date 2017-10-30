@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Enums;
 
@@ -8,8 +8,8 @@ namespace Vantoozz\ProxyScraper\Enums;
  */
 abstract class Metrics
 {
-    public const AVAILABLE = 'available';
-    public const ANONYMITY = 'anonymity';
-    public const RESPONSE_TIME = 'response_time';
-    public const HTTPS = 'https';
+    const AVAILABLE = 'available';
+    const ANONYMITY = 'anonymity';
+    const RESPONSE_TIME = 'response_time';
+    const HTTPS = 'https';
 }

@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\Validators;
 
@@ -20,8 +20,9 @@ final class Ipv4RangeValidatorTest extends TestCase
      * @dataProvider proxiesDataProvider
      * @param string $string
      * @param bool $expected
+     * @return void
      */
-    public function is_creates_from_strings(string $string, bool $expected): void
+    public function is_creates_from_strings(string $string, bool $expected)
     {
         $validator = new Ipv4RangeValidator;
         try {

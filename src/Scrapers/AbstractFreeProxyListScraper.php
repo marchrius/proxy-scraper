@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Scrapers;
 
@@ -59,7 +59,6 @@ abstract class AbstractFreeProxyListScraper implements ScraperInterface
      * @return Proxy
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
-     * @throws \Vantoozz\ProxyScraper\Exceptions\InvalidArgumentException
      */
     private function makeProxy(Dom $row): Proxy
     {

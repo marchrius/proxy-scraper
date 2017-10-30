@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Scrapers;
 
@@ -40,7 +40,7 @@ final class CompositeScraper implements ScraperInterface
      * @param ScraperInterface $scraper
      * @return void
      */
-    public function addScraper(ScraperInterface $scraper): void
+    public function addScraper(ScraperInterface $scraper)
     {
         $this->scrapers[] = $scraper;
     }
@@ -49,7 +49,7 @@ final class CompositeScraper implements ScraperInterface
      * @param callable $exceptionHandler
      * @return void
      */
-    public function handleScraperExceptionWith(callable $exceptionHandler): void
+    public function handleScraperExceptionWith(callable $exceptionHandler)
     {
         $this->exceptionHandler = $exceptionHandler;
     }
@@ -59,7 +59,7 @@ final class CompositeScraper implements ScraperInterface
      * @throws ScraperException
      * @return void
      */
-    private function handleScraperException(ScraperException $e): void
+    private function handleScraperException(ScraperException $e)
     {
         if (!is_callable($this->exceptionHandler)) {
             throw $e;

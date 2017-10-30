@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper;
 
@@ -10,8 +10,8 @@ use Vantoozz\ProxyScraper\Exceptions\InvalidArgumentException;
  */
 final class Port
 {
-    private const MIN_PORT_NUMBER = 1;
-    private const MAX_PORT_NUMBER = 65535;
+    const MIN_PORT_NUMBER = 1;
+    const MAX_PORT_NUMBER = 65535;
 
     /**
      * @var int

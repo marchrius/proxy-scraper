@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\Scrapers;
 
@@ -18,8 +18,10 @@ final class ProxyDbScraperTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\ScraperException
      * @expectedExceptionMessage error message
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_throws_an_exception_on_http_client_error(): void
+    public function it_throws_an_exception_on_http_client_error()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -31,12 +33,15 @@ final class ProxyDbScraperTest extends TestCase
         $scraper = new ProxyDbScraper($httpClient);
         $scraper->get()->current();
     }
+
     /**
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\ScraperException
      * @expectedExceptionMessage some text
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_throws_an_exception_on_non_html_response(): void
+    public function it_throws_an_exception_on_non_html_response()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -51,8 +56,10 @@ final class ProxyDbScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_returns_a_proxy(): void
+    public function it_returns_a_proxy()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -70,8 +77,10 @@ final class ProxyDbScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_skips_bad_rows(): void
+    public function it_skips_bad_rows()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);

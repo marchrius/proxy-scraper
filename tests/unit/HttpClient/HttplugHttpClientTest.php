@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\HttpClient;
 
@@ -21,8 +21,9 @@ final class HttplugHttpClientTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      * @expectedExceptionMessage error message
+     * @return void
      */
-    public function it_throws_an_exception_if_an_error_happens(): void
+    public function it_throws_an_exception_if_an_error_happens()
     {
         /** @var RequestInterface|\PHPUnit_Framework_MockObject_MockObject $request */
         $request = $this->createMock(RequestInterface::class);
@@ -49,8 +50,10 @@ final class HttplugHttpClientTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      * @expectedExceptionMessage error message
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      */
-    public function it_throws_an_exception_if_processing_the_request_is_impossible(): void
+    public function it_throws_an_exception_if_processing_the_request_is_impossible()
     {
         /** @var RequestInterface|\PHPUnit_Framework_MockObject_MockObject $messageFactory $request */
         $request = $this->createMock(RequestInterface::class);
@@ -77,8 +80,10 @@ final class HttplugHttpClientTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\HttpClientException
      */
-    public function it_returns_a_string(): void
+    public function it_returns_a_string()
     {
         /** @var RequestInterface|\PHPUnit_Framework_MockObject_MockObject $messageFactory $request */
         $request = $this->createMock(RequestInterface::class);
@@ -122,8 +127,10 @@ final class HttplugHttpClientTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\RuntimeException
      * @expectedExceptionMessage Method not implemented
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\RuntimeException
      */
-    public function it_does_not_support_proxied_calls(): void
+    public function it_does_not_support_proxied_calls()
     {
         /** @var HttpClient|\PHPUnit_Framework_MockObject_MockObject $client */
         $client = $this->createMock(HttpClient::class);

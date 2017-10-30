@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Scrapers;
 
@@ -16,9 +16,9 @@ use Vantoozz\ProxyScraper\Text;
  */
 final class ProxyDbScraper implements ScraperInterface
 {
-    private const PAGE_SIZE = 50;
-    private const MAX_OFFSET = 1000;
-    private const PAGE_URL = 'http://proxydb.net/?limit=%d&offset=%d';
+    const PAGE_SIZE = 50;
+    const MAX_OFFSET = 1000;
+    const PAGE_URL = 'http://proxydb.net/?limit=%d&offset=%d';
 
     /**
      * @var HttpClientInterface
@@ -84,7 +84,6 @@ final class ProxyDbScraper implements ScraperInterface
      * @return Proxy
      * @throws \RuntimeException
      * @throws \InvalidArgumentException
-     * @throws \Vantoozz\ProxyScraper\Exceptions\InvalidArgumentException
      */
     private function makeProxy(Dom $row): Proxy
     {

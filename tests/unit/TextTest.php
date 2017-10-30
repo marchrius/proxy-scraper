@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests;
 
@@ -16,8 +16,9 @@ final class TextTest extends TestCase
      * @dataProvider htmlDataProvider
      * @param string $string
      * @param bool $expected
+     * @return void
      */
-    public function it_detects_html(string $string, bool $expected): void
+    public function it_detects_html(string $string, bool $expected)
     {
         $this->assertEquals((new Text($string))->isHtml(), $expected);
     }

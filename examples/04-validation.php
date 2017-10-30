@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 use Vantoozz\ProxyScraper\Exceptions\ValidationException;
 use Vantoozz\ProxyScraper\Ipv4;

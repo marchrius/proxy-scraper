@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper;
 
@@ -21,7 +21,7 @@ final class Metric
     /**
      * Metric constructor.
      * @param string $name
-     * @param $value
+     * @param mixed $value
      */
     public function __construct(string $name, $value)
     {

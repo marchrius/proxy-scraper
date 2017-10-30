@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\Enums;
 
@@ -8,6 +8,6 @@ namespace Vantoozz\ProxyScraper\Enums;
  */
 abstract class Http
 {
-    public const GET = 'GET';
-    public const POST = 'POST';
+    const GET = 'GET';
+    const POST = 'POST';
 }

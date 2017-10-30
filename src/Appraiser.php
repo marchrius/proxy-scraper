@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper;
 
@@ -72,7 +72,9 @@ final class Appraiser
         try {
             $this->decodeResponse($this->httpClient->getProxied('https://' . $this->whoamiHost, (string)$proxy));
             yield new Metric(Metrics::HTTPS, true);
-        } catch (HttpClientException | AppraiserException $e) {
+        } catch (HttpClientException $e) {
+            yield new Metric(Metrics::HTTPS, false);
+        } catch (AppraiserException $e) {
             yield new Metric(Metrics::HTTPS, false);
         }
     }

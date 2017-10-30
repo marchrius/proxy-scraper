@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests\Scrapers;
 
@@ -18,8 +18,10 @@ final class HideMyIpScraperTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\ScraperException
      * @expectedExceptionMessage error message
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_throws_an_exception_on_http_client_error(): void
+    public function it_throws_an_exception_on_http_client_error()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -36,8 +38,10 @@ final class HideMyIpScraperTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\ScraperException
      * @expectedExceptionMessage Unknown markup
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_throws_an_exception_if_unknown_markdown_got(): void
+    public function it_throws_an_exception_if_unknown_markdown_got()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -54,8 +58,10 @@ final class HideMyIpScraperTest extends TestCase
      * @test
      * @expectedException \Vantoozz\ProxyScraper\Exceptions\ScraperException
      * @expectedExceptionMessage Cannot parse json: Syntax error
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_throws_an_exception_if_bad_json_got(): void
+    public function it_throws_an_exception_if_bad_json_got()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -70,8 +76,10 @@ final class HideMyIpScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_returns_a_proxy(): void
+    public function it_returns_a_proxy()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -89,8 +97,10 @@ final class HideMyIpScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_skips_bad_rows(): void
+    public function it_skips_bad_rows()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -106,8 +116,10 @@ final class HideMyIpScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_skips_bad_formatted_json_items(): void
+    public function it_skips_bad_formatted_json_items()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -123,8 +135,10 @@ final class HideMyIpScraperTest extends TestCase
 
     /**
      * @test
+     * @return void
+     * @throws \Vantoozz\ProxyScraper\Exceptions\ScraperException
      */
-    public function it_skips_not_filled_json_items(): void
+    public function it_skips_not_filled_json_items()
     {
         /** @var HttpClientInterface|\PHPUnit_Framework_MockObject_MockObject $httpClient */
         $httpClient = $this->createMock(HttpClientInterface::class);
@@ -137,4 +151,5 @@ final class HideMyIpScraperTest extends TestCase
 
         $this->assertNull($scraper->get()->current());
     }
+    
 }

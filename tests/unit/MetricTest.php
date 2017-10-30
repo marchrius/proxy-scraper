@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php /* Disabled for PHP 7.0 support */ /* declare(strict_types( )?=( )?1); */
 
 namespace Vantoozz\ProxyScraper\UnitTests;
 
@@ -13,8 +13,9 @@ final class MetricTest extends TestCase
 {
     /**
      * @test
+     * @return void
      */
-    public function it_returns_name(): void
+    public function it_returns_name()
     {
         $metric = new Metric('some_name', 123);
         static::assertSame('some_name', $metric->getName());
@@ -22,8 +23,9 @@ final class MetricTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
-    public function it_returns_value(): void
+    public function it_returns_value()
     {
         $metric = new Metric('some_name', 123);
         static::assertSame(123, $metric->getValue());
@@ -31,8 +33,9 @@ final class MetricTest extends TestCase
 
     /**
      * @test
+     * @return void
      */
-    public function it_converts_to_a_string(): void
+    public function it_converts_to_a_string()
     {
         $metric = new Metric('some_name', 123);
         static::assertSame('some_name: 123', (string)$metric);
