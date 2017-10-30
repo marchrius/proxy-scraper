@@ -13,41 +13,7 @@ $httpClient = new GuzzleHttpClient(new GuzzleClient([
     'timeout' => 3,
 ]));
 $scraper = new Scrapers\FoxToolsScraper($httpClient);
-$url = "https://www.zara.com/it/it/uomo-l534.html?v1=434788";
-$okProxy = "";
-try {
-    foreach ($scraper->get() as $proxy) {
-        if ($okProxy != "") continue;
-        echo (string)$proxy . "\n";
-        $client = new GuzzleClient(
-            [
-                'proxy' => (string)$proxy
-            ]
-        );
 
-        try {
-            $client->get($url);
-        } catch (\Exception $e) {
-            continue;
-        }
-        $okProxy = (string)$proxy;
-    }
-} catch (ScraperException $e) {
-    echo "[Error]: " . $e->getMessage();
+foreach ($scraper->get() as $proxy) {
+    echo (string)$proxy . "\n";
 }
-
-$client = new GuzzleClient([
-    'proxy' => $okProxy
-]);
-
-try {
-    $response = $client->get($url);
-} catch (\Exception $e) {
-
-}
-
-echo $response->getStatusCode() == 200 ? "Ok" : $response->getStatusCode();
-
-$contents = $response->getBody()->getContents();
-
-echo $contents;
